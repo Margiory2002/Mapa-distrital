@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link href="resources/ol-geocoder.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+        html, body {
+            background-color: #a6cee3;
+        }
+        .ol-control > * {
+            background-color: #6cfabb!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #6cfabb!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(108, 250, 187, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+		ol-popup {
+			max-width: 300px !important;
+			max-height: 200px !important;
+			overflow-y: auto !important;
+			font-size: 13px;
+			padding: 10px;
+		}
+		#logo-container {
+         position: absolute;
+         bottom: 10px;
+         left: 10px;
+         z-index: 9999;
+         background-color: rgba(255, 255, 255, 0.8);
+         padding: 6px 10px;
+         border-radius: 8px;
+         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #logo {
+         height: 50px;
+         width: auto;
+        }
+
+        <style>
+        <style>
+        #popup-content table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        #popup-content table td {
+          padding: 4px 8px;
+          border-bottom: 1px solid #dddddd;
+          vertical-align: top;
+          font-size: 13px;
+        }
+        #popup-content table td:first-child {
+          font-weight: bold;
+          color: #555;
+          width: 40%;
+        }
+        </style>
+        <style>
+/* Caja del popup */
+.ol-popup {
+    max-width: 300px !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    font-size: 13px;
+    padding: 10px;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    background-color: #ffffff !important;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.95;
+}
+
+/* Botón de cierre */
+.ol-popup-closer {
+    color: #555 !important;
+    font-size: 18px !important;
+    font-weight: bold;
+    text-decoration: none;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    padding: 2px 6px;
+}
+
+.ol-popup-closer:hover {
+    color: #d00 !important;
+}
+
+/* Tabla de atributos dentro del popup */
+#popup-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#popup-content table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #dddddd;
+    vertical-align: top;
+    font-size: 13px;
+}
+
+#popup-content table td:first-child {
+    font-weight: bold;
+    color: #555;
+    width: 40%;
+}
+
+/* Títulos o encabezados si hay */
+#popup-content h3 {
+    font-size: 16px;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+}
+</style>
+
+        </style>
+        <title>Distritos del departamento de Ica</title>
+    </head>
+    <body>
+	<div id="logo-container">
+  <a href="https://muniica.gob.pe/portal/" target="_blank">
+    <img src="https://muniica.gob.pe/portal/wp-content/uploads/2023/09/escudo-ica.jpg" alt="Logo UPN" id="logo">
+  </a>
+</div>
+
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        <script src="resources/qgis2web_expressions.js"></script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="resources/ol-geocoder.js"></script>
+        <script src="layers/ProvinciasdeIca_1.js"></script><script src="layers/Hidrografia_2.js"></script><script src="layers/ie_Ica_3.js"></script><script src="layers/red_vial_dep_4.js"></script><script src="layers/red_vial_vecinal_5.js"></script>
+        <script src="styles/ProvinciasdeIca_1_style.js"></script><script src="styles/Hidrografia_2_style.js"></script><script src="styles/ie_Ica_3_style.js"></script><script src="styles/red_vial_dep_4_style.js"></script><script src="styles/red_vial_vecinal_5_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>
+    </body>
+</html>
